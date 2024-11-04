@@ -68,11 +68,15 @@ jobs:
           echo "uid=$(id -u)" >> $GITHUB_OUTPUT
           echo "gid=$(id -g)" >> $GITHUB_OUTPUT
 
+      # 6b. Check UID and GID
+      - name: Check UID and GID
+        run: echo "UID: ${{ steps.get_ids.outputs.uid }}, GID: ${{ steps.get_ids.outputs.gid }}"
+
       # 7. Convert Markdown to PDF Using Docker
       - name: Convert Markdown to PDF
         uses: addnab/docker-run-action@v3
         with:
-          image: pandoc/core:latest  # Consider pinning to a specific version, e.g., pandoc/core:2.19
+          image: pandoc/core:2.19  # Pin to a specific version for consistency
           options: --user ${{ steps.get_ids.outputs.uid }}:${{ steps.get_ids.outputs.gid }}
           run: |
             mkdir -p pdf
