@@ -35,13 +35,19 @@ jobs:
         run: |
           git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git
 
-      # 4. Fix Markdown Formatting
+      # 4. Verify Markdown Fix Script
+      - name: Verify Markdown Fix Script
+        run: |
+          ls -la scripts/
+          cat scripts/fix_markdown.sh
+
+      # 5. Fix Markdown Formatting
       - name: Fix Markdown Formatting
         run: |
           chmod +x scripts/fix_markdown.sh
           scripts/fix_markdown.sh -b Deep-Dive.md
 
-      # 5. Commit and Push Markdown Fixes
+      # 6. Commit and Push Markdown Fixes
       - name: Commit and Push Markdown Fixes
         run: |
           # Check if Deep-Dive.md was modified
@@ -53,33 +59,21 @@ jobs:
             git push origin main
           fi
 
-      # 6. Retrieve UID and GID
-      - name: Get UID and GID
-        id: get_ids
-        run: |
-          echo "uid=$(id -u)" >> $GITHUB_OUTPUT
-          echo "gid=$(id -g)" >> $GITHUB_OUTPUT
-
-      # 7. Change Ownership of Workspace
-      - name: Change Ownership of Workspace
-        run: |
-          sudo chown -R ${{ steps.get_ids.outputs.uid }}:${{ steps.get_ids.outputs.gid }} $GITHUB_WORKSPACE
-
-      # 8. Print GITHUB_WORKSPACE for Debugging (Optional)
+      # 7. Print GITHUB_WORKSPACE for Debugging (Optional)
       - name: Print GITHUB_WORKSPACE
         run: echo "GITHUB_WORKSPACE is $GITHUB_WORKSPACE"
 
-      # 9. List Contents Before Conversion (Optional)
+      # 8. List Workspace Contents Before Conversion (Optional)
       - name: List Workspace Contents Before Conversion
         run: ls -la $GITHUB_WORKSPACE
 
-      # 10. Convert Markdown to PDF Using Docker
+      # 9. Convert Markdown to PDF Using Docker
       - name: Convert Markdown to PDF
         id: convert-to-pdf
         uses: addnab/docker-run-action@v3
         with:
-          image: pandoc/latex:latest  # Use an image with LaTeX installed
-          options: --user ${{ steps.get_ids.outputs.uid }}:${{ steps.get_ids.outputs.gid }}
+          image: pandoc/latex:2.19  # Specify a specific version for consistency
+          options: --user $(id -u):$(id -g)  # Run as the current user
           run: |
             echo "Listing workspace contents before conversion:"
             ls -la /github/workspace
@@ -90,11 +84,11 @@ jobs:
             # Convert Markdown to PDF
             pandoc /github/workspace/Deep-Dive.md -o /github/workspace/pdf/Deep-Dive.pdf --pdf-engine=xelatex
 
-      # 11. List Contents After Conversion (Optional)
+      # 10. List Workspace Contents After Conversion (Optional)
       - name: List Workspace Contents After Conversion
         run: ls -la $GITHUB_WORKSPACE/pdf
 
-      # 12. Commit and Push PDF
+      # 11. Commit and Push PDF
       - name: Commit and Push PDF
         run: |
           # Check if pdf/Deep-Dive.pdf was modified
