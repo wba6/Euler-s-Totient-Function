@@ -1,18 +1,3 @@
-name: Convert Markdown to PDF and Commit
-
-# Define the permissions for GITHUB_TOKEN
-permissions:
-  contents: write  # Grants read and write access to repository contents
-
-on:
-  push:
-    branches:
-      - main
-    paths:
-      - 'Deep-Dive.md'
-      - '.github/workflows/convert-markdown-to-pdf.yml'
-      - 'scripts/fix_markdown.sh'  # Include the fix script in the watch paths
-
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -22,26 +7,28 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v3
         with:
-          fetch-depth: 0  # Ensures full history is fetched
+          fetch-depth: 0
 
-      # 2. Set Up Git User for Commit
+      # 2. Set Up Git User
       - name: Set up Git User
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
 
-      # 5. Run Markdown Fix Script
+      # 3. Configure GitHub Token
+      - name: Configure GitHub Token
+        run: |
+          git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git
+
+      # 4. Fix Markdown Formatting
       - name: Fix Markdown Formatting
         run: |
-          # Ensure the script is executable
           chmod +x scripts/fix_markdown.sh
-          # Run the script on Deep-Dive.md with backup option
           scripts/fix_markdown.sh -b Deep-Dive.md
 
-      # 6. Commit and Push Markdown Fixes (if any)
+      # 5. Commit and Push Markdown Fixes
       - name: Commit and Push Markdown Fixes
         run: |
-          # Check if Deep-Dive.md was modified
           if git diff --quiet Deep-Dive.md; then
             echo "No Markdown fixes needed."
           else
@@ -50,24 +37,24 @@ jobs:
             git push origin main
           fi
 
-      # 6a. Retrieve UID and GID
+      # 6. Retrieve UID and GID
       - name: Get UID and GID
         id: get_ids
         run: |
           echo "uid=$(id -u)" >> $GITHUB_OUTPUT
           echo "gid=$(id -g)" >> $GITHUB_OUTPUT
 
-      # 6c. Change Ownership of Workspace
+      # 7. Change Ownership of Workspace
       - name: Change Ownership of Workspace
         run: |
           sudo chown -R ${{ steps.get_ids.outputs.uid }}:${{ steps.get_ids.outputs.gid }} /github/workspace
 
-      # 7. Convert Markdown to PDF Using Docker
+      # 8. Convert Markdown to PDF Using Docker
       - name: Convert Markdown to PDF
-        id: convert-to-pdf  # Added ID here
+        id: convert-to-pdf
         uses: addnab/docker-run-action@v3
         with:
-          image: pandoc/core:2.19  # Pin to a specific version for consistency
+          image: pandoc/latex:latest
           options: --user ${{ steps.get_ids.outputs.uid }}:${{ steps.get_ids.outputs.gid }}
           run: |
             echo "Listing workspace contents before conversion:"
@@ -77,10 +64,9 @@ jobs:
             ls -la /github/workspace/pdf
             pandoc Deep-Dive.md -o pdf/Deep-Dive.pdf --pdf-engine=xelatex
 
-      # 8. Commit and Push PDF (if changed)
+      # 9. Commit and Push PDF
       - name: Commit and Push PDF
         run: |
-          # Check if pdf/Deep-Dive.pdf was modified
           if git diff --quiet pdf/Deep-Dive.pdf; then
             echo "No PDF updates needed."
           else
