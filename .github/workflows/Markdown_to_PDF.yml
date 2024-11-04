@@ -73,9 +73,9 @@ jobs:
         uses: addnab/docker-run-action@v3
         with:
           image: pandoc/latex:2.19  # Specify a specific version for consistency
-          # Remove the 'options' field to avoid malformed Docker flags
+          options: -v ${{ github.workspace }}:/github/workspace  # Explicitly mount the workspace
           run: |
-            echo "Listing workspace contents before conversion:"
+            echo "Listing workspace contents inside Docker before conversion:"
             ls -la /github/workspace
             # Create 'pdf' directory inside the workspace
             mkdir -p /github/workspace/pdf
