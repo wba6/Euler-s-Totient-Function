@@ -63,7 +63,7 @@ jobs:
       # 7. Change Ownership of Workspace
       - name: Change Ownership of Workspace
         run: |
-          sudo chown -R ${{ steps.get_ids.outputs.uid }}:${{ steps.get_ids.outputs.gid }} /github/workspace
+          sudo chown -R ${{ steps.get_ids.outputs.uid }}:${{ steps.get_ids.outputs.gid }} $GITHUB_WORKSPACE
 
       # 8. Convert Markdown to PDF Using Docker
       - name: Convert Markdown to PDF
@@ -74,10 +74,10 @@ jobs:
           options: --user ${{ steps.get_ids.outputs.uid }}:${{ steps.get_ids.outputs.gid }}
           run: |
             echo "Listing workspace contents before conversion:"
-            ls -la /github/workspace
-            mkdir -p pdf
+            ls -la $GITHUB_WORKSPACE
+            mkdir -p $GITHUB_WORKSPACE/pdf
             echo "Listing workspace contents after creating pdf directory:"
-            ls -la /github/workspace/pdf
+            ls -la $GITHUB_WORKSPACE/pdf
             pandoc Deep-Dive.md -o pdf/Deep-Dive.pdf --pdf-engine=xelatex
 
       # 9. Commit and Push PDF
