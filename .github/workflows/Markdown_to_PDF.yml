@@ -30,6 +30,17 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
 
+      # 3. Install Node.js
+      - name: Install Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16'  # Specify the Node.js version
+
+      # 4. Install Markdownlint
+      - name: Install Markdownlint
+        run: |
+          npm install -g markdownlint-cli
+
       # 5. Run Markdown Fix Script
       - name: Fix Markdown Formatting
         run: |
@@ -50,7 +61,23 @@ jobs:
             git push origin main
           fi
 
-      # 7. Convert Markdown to PDF Using Docker
+      # 6a. Retrieve UID and GID
+      - name: Get UID and GID
+        id: get_ids
+        run: |
+          echo "uid=$(id -u)" >> $GITHUB_OUTPUT
+          echo "gid=$(id -g)" >> $GITHUB_OUTPUT
+
+      # 6b. Check UID and GID
+      - name: Check UID and GID
+        run: echo "UID: ${{ steps.get_ids.outputs.uid }}, GID: ${{ steps.get_ids.outputs.gid }}"
+
+      # 6c. Change Ownership of Workspace
+      - name: Change Ownership of Workspace
+        run: |
+          sudo chown -R ${{ steps.get_ids.outputs.uid }}:${{ steps.get_ids.outputs.gid }} /github/workspace
+
+      # 7. Convert Markdown to PDF Using Docker with Debugging
       - name: Convert Markdown to PDF
         id: convert-to-pdf  # Added ID here
         uses: addnab/docker-run-action@v3
@@ -58,7 +85,11 @@ jobs:
           image: pandoc/core:2.19  # Pin to a specific version for consistency
           options: --user ${{ steps.get_ids.outputs.uid }}:${{ steps.get_ids.outputs.gid }}
           run: |
+            echo "Listing workspace contents before conversion:"
+            ls -la /github/workspace
             mkdir -p pdf
+            echo "Listing workspace contents after creating pdf directory:"
+            ls -la /github/workspace/pdf
             pandoc Deep-Dive.md -o pdf/Deep-Dive.pdf --pdf-engine=xelatex
 
       # 8. Commit and Push PDF (if changed)
