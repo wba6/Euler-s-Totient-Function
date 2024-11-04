@@ -1,4 +1,3 @@
-
 name: Convert Markdown to PDF and Commit
 
 # Define the permissions for GITHUB_TOKEN
@@ -62,19 +61,17 @@ jobs:
             git push origin main
           fi
 
-      # 8. Install Pandoc and LaTeX Dependencies
-      - name: Install Pandoc and LaTeX
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y pandoc texlive texlive-xetex texlive-latex-extra
-
-      # 9. Convert Markdown to PDF
+      # 7. Convert Markdown to PDF Using Docker
       - name: Convert Markdown to PDF
-        run: |
-          mkdir -p pdf
-          pandoc Deep-Dive.md -o pdf/Deep-Dive.pdf --pdf-engine=xelatex
+        uses: addnab/docker-run-action@v3
+        with:
+          image: pandoc/core:latest  # Use the pre-built Docker image
+          options: --user $(id -u):$(id -g)  # Run as the current user to handle permissions
+          run: |
+            mkdir -p pdf
+            pandoc Deep-Dive.md -o pdf/Deep-Dive.pdf --pdf-engine=xelatex
 
-      # 10. Commit and Push PDF (if changed)
+      # 8. Commit and Push PDF (if changed)
       - name: Commit and Push PDF
         run: |
           # Check if pdf/Deep-Dive.pdf was modified
