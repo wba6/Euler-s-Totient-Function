@@ -39,7 +39,7 @@ header-includes:
 ## Introduction
 
   - **Overview of Euler's Totient Function**
-  - Definition and basic intuition (test)
+  - Definition and basic intuition
   - **Significance in Number Theory**
   - Role in understanding the structure of integers
   - **Historical Context**
