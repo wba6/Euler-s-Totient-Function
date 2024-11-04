@@ -1,3 +1,4 @@
+
 name: Convert Markdown to PDF and Commit
 
 # Define the permissions for GITHUB_TOKEN
@@ -24,30 +25,32 @@ jobs:
         with:
           fetch-depth: 0  # Ensures full history is fetched
 
-      # 2. Set Up Git User
+      # 2. Set Up Git User for Commit
       - name: Set up Git User
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
 
-      # 3. Configure GitHub Token for Pushing
-      - name: Configure GitHub Token
-        run: |
-          git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git
+      # 3. Install Node.js
+      - name: Install Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16'  # Specify the Node.js version
 
-      # 4. Verify Markdown Fix Script
-      - name: Verify Markdown Fix Script
+      # 4. Install Markdownlint
+      - name: Install Markdownlint
         run: |
-          ls -la scripts/
-          cat scripts/fix_markdown.sh
+          npm install -g markdownlint-cli
 
-      # 5. Fix Markdown Formatting
+      # 5. Run Markdown Fix Script
       - name: Fix Markdown Formatting
         run: |
+          # Ensure the script is executable
           chmod +x scripts/fix_markdown.sh
+          # Run the script on Deep-Dive.md with backup option
           scripts/fix_markdown.sh -b Deep-Dive.md
 
-      # 6. Commit and Push Markdown Fixes
+      # 6. Commit and Push Markdown Fixes (if any)
       - name: Commit and Push Markdown Fixes
         run: |
           # Check if Deep-Dive.md was modified
@@ -59,40 +62,19 @@ jobs:
             git push origin main
           fi
 
-      # 7. Print GITHUB_WORKSPACE for Debugging (Optional)
-      - name: Print GITHUB_WORKSPACE
-        run: echo "GITHUB_WORKSPACE is $GITHUB_WORKSPACE"
+      # 8. Install Pandoc and LaTeX Dependencies
+      - name: Install Pandoc and LaTeX
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y pandoc texlive texlive-xetex texlive-latex-extra
 
-      # 8. List Workspace Contents Before Conversion (Optional)
-      - name: List Workspace Contents Before Conversion
-        run: ls -la $GITHUB_WORKSPACE
-
-      # 9. Convert Markdown to PDF Using Docker
+      # 9. Convert Markdown to PDF
       - name: Convert Markdown to PDF
-        id: convert-to-pdf
-        uses: addnab/docker-run-action@v3
-        with:
-          image: pandoc/latex:2.19  # Specify a specific version for consistency
-          options: --user root -v ${{ github.workspace }}:/github/workspace  # Run as root and mount workspace
-          run: |
-            echo "Updating package lists..."
-            apt-get update
-            echo "Installing texlive-latex-extra..."
-            apt-get install -y texlive-latex-extra
-            echo "Listing workspace contents inside Docker before conversion:"
-            ls -la /github/workspace
-            # Create 'pdf' directory inside the workspace
-            mkdir -p /github/workspace/pdf
-            echo "Listing workspace contents after creating pdf directory:"
-            ls -la /github/workspace/pdf
-            # Convert Markdown to PDF
-            pandoc /github/workspace/Deep-Dive.md -o /github/workspace/pdf/Deep-Dive.pdf --pdf-engine=xelatex
+        run: |
+          mkdir -p pdf
+          pandoc Deep-Dive.md -o pdf/Deep-Dive.pdf --pdf-engine=xelatex
 
-      # 10. List Workspace Contents After Conversion (Optional)
-      - name: List Workspace Contents After Conversion
-        run: ls -la $GITHUB_WORKSPACE/pdf
-
-      # 11. Commit and Push PDF
+      # 10. Commit and Push PDF (if changed)
       - name: Commit and Push PDF
         run: |
           # Check if pdf/Deep-Dive.pdf was modified
