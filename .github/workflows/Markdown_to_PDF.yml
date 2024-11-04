@@ -73,8 +73,12 @@ jobs:
         uses: addnab/docker-run-action@v3
         with:
           image: pandoc/latex:2.19  # Specify a specific version for consistency
-          options: -v ${{ github.workspace }}:/github/workspace  # Explicitly mount the workspace
+          options: --user root -v ${{ github.workspace }}:/github/workspace  # Run as root and mount workspace
           run: |
+            echo "Updating package lists..."
+            apt-get update
+            echo "Installing texlive-latex-extra..."
+            apt-get install -y texlive-latex-extra
             echo "Listing workspace contents inside Docker before conversion:"
             ls -la /github/workspace
             # Create 'pdf' directory inside the workspace
