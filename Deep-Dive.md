@@ -34,7 +34,8 @@ header-includes:
     \makeatother
 ---
 
-# Cool Results From Euler's Totient Function
+# Cool Results from Euler's Totient Function
+
 ## Introduction
 - **Overview of Euler's Totient Function**
   - Definition and basic intuition
@@ -55,7 +56,7 @@ header-includes:
 
 ## Euler's Theorem and Its Implications
 - **Statement of Euler's Theorem**
-  - If gcd(a, n) = 1, then \( a^{\phi(n)} \equiv 1 \mod n \)
+  - If gcd(a, n) = 1, then $a^{\phi(n)} \equiv 1 \mod n$
 - **Proof Outline**
   - Key steps in proving Euler's Theorem
 - **Applications**
@@ -70,7 +71,7 @@ header-includes:
 
 ## Formula for Euler's Totient Function
 - **Euler's Product Formula**
-  - \( \phi(n) = n \prod_{p|n} \left(1 - \frac{1}{p}\right) \)
+  - $$\phi(n) = n \prod_{p|n} \left(1 - \frac{1}{p}\right)$$
 - **Derivation of the Formula**
   - Step-by-step derivation based on prime factors
 - **Examples**
@@ -78,7 +79,7 @@ header-includes:
 
 ## Interesting Results and Identities
 - **Sum of Totients**
-  - \( \sum_{d|n} \phi(d) = n \)
+  - $$\sum_{d|n} \phi(d) = n$$
 - **Relation to Other Number-Theoretic Functions**
   - Connections with Möbius function, divisor functions, etc.
 - **Totient Function in Modular Arithmetic**
@@ -121,5 +122,3 @@ header-includes:
   - Euler's original papers
 - **Secondary Sources**
   - Textbooks and research articles on number theory and cryptography
-
-
