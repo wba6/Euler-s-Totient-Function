@@ -65,7 +65,15 @@ jobs:
         run: |
           sudo chown -R ${{ steps.get_ids.outputs.uid }}:${{ steps.get_ids.outputs.gid }} $GITHUB_WORKSPACE
 
-      # 8. Convert Markdown to PDF Using Docker
+      # 8. Print GITHUB_WORKSPACE for Debugging (Optional)
+      - name: Print GITHUB_WORKSPACE
+        run: echo "GITHUB_WORKSPACE is $GITHUB_WORKSPACE"
+
+      # 9. List Contents Before Conversion (Optional)
+      - name: List Workspace Contents Before Conversion
+        run: ls -la $GITHUB_WORKSPACE
+
+      # 10. Convert Markdown to PDF Using Docker
       - name: Convert Markdown to PDF
         id: convert-to-pdf
         uses: addnab/docker-run-action@v3
@@ -74,13 +82,19 @@ jobs:
           options: --user ${{ steps.get_ids.outputs.uid }}:${{ steps.get_ids.outputs.gid }}
           run: |
             echo "Listing workspace contents before conversion:"
-            ls -la $GITHUB_WORKSPACE
-            mkdir -p $GITHUB_WORKSPACE/pdf
+            ls -la /github/workspace
+            # Create 'pdf' directory inside the workspace
+            mkdir -p /github/workspace/pdf
             echo "Listing workspace contents after creating pdf directory:"
-            ls -la $GITHUB_WORKSPACE/pdf
-            pandoc Deep-Dive.md -o pdf/Deep-Dive.pdf --pdf-engine=xelatex
+            ls -la /github/workspace/pdf
+            # Convert Markdown to PDF
+            pandoc /github/workspace/Deep-Dive.md -o /github/workspace/pdf/Deep-Dive.pdf --pdf-engine=xelatex
 
-      # 9. Commit and Push PDF
+      # 11. List Contents After Conversion (Optional)
+      - name: List Workspace Contents After Conversion
+        run: ls -la $GITHUB_WORKSPACE/pdf
+
+      # 12. Commit and Push PDF
       - name: Commit and Push PDF
         run: |
           # Check if pdf/Deep-Dive.pdf was modified
