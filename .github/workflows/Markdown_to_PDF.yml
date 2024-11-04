@@ -61,12 +61,19 @@ jobs:
             git push origin main
           fi
 
+      # 6a. Retrieve UID and GID
+      - name: Get UID and GID
+        id: get_ids
+        run: |
+          echo "uid=$(id -u)" >> $GITHUB_OUTPUT
+          echo "gid=$(id -g)" >> $GITHUB_OUTPUT
+
       # 7. Convert Markdown to PDF Using Docker
       - name: Convert Markdown to PDF
         uses: addnab/docker-run-action@v3
         with:
-          image: pandoc/core:latest  # Use the pre-built Docker image
-          options: --user $(id -u):$(id -g)  # Run as the current user to handle permissions
+          image: pandoc/core:latest  # Consider pinning to a specific version, e.g., pandoc/core:2.19
+          options: --user ${{ steps.get_ids.outputs.uid }}:${{ steps.get_ids.outputs.gid }}
           run: |
             mkdir -p pdf
             pandoc Deep-Dive.md -o pdf/Deep-Dive.pdf --pdf-engine=xelatex
