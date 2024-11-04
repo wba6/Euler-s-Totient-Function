@@ -73,7 +73,7 @@ jobs:
         uses: addnab/docker-run-action@v3
         with:
           image: pandoc/latex:2.19  # Specify a specific version for consistency
-          options: --user $(id -u):$(id -g)  # Run as the current user
+          # Remove the 'options' field to avoid malformed Docker flags
           run: |
             echo "Listing workspace contents before conversion:"
             ls -la /github/workspace
