@@ -1,8 +1,7 @@
 name: Convert Markdown to PDF and Commit
 
-# Define the permissions for GITHUB_TOKEN
 permissions:
-  contents: write  # Grants read and write access to repository contents
+  contents: write
 
 on:
   push:
@@ -11,7 +10,7 @@ on:
     paths:
       - 'Deep-Dive.md'
       - '.github/workflows/convert-markdown-to-pdf.yml'
-      - 'scripts/fix_markdown.sh'  # Include the fix script in the watch paths
+      - 'scripts/fix_markdown.sh'
 
 jobs:
   build:
@@ -22,7 +21,7 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v3
         with:
-          fetch-depth: 0  # Ensures full history is fetched
+          fetch-depth: 0
 
       # 2. Set Up Git User for Commit
       - name: Set up Git User
@@ -34,7 +33,7 @@ jobs:
       - name: Install Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '16'  # Specify the Node.js version
+          node-version: '16'
 
       # 4. Install Markdownlint
       - name: Install Markdownlint
@@ -44,15 +43,12 @@ jobs:
       # 5. Run Markdown Fix Script
       - name: Fix Markdown Formatting
         run: |
-          # Ensure the script is executable
           chmod +x scripts/fix_markdown.sh
-          # Run the script on Deep-Dive.md with backup option
           scripts/fix_markdown.sh -b Deep-Dive.md
 
       # 6. Commit and Push Markdown Fixes (if any)
       - name: Commit and Push Markdown Fixes
         run: |
-          # Check if Deep-Dive.md was modified
           if git diff --quiet Deep-Dive.md; then
             echo "No Markdown fixes needed."
           else
@@ -61,31 +57,30 @@ jobs:
             git push origin main
           fi
 
-      # 6a. Retrieve UID and GID
-      - name: Get UID and GID
-        id: get_ids
-        run: |
-          echo "uid=$(id -u)" >> $GITHUB_OUTPUT
-          echo "gid=$(id -g)" >> $GITHUB_OUTPUT
-
-      # 6b. Check UID and GID
-      - name: Check UID and GID
-        run: echo "UID: ${{ steps.get_ids.outputs.uid }}, GID: ${{ steps.get_ids.outputs.gid }}"
-
-      # 7. Convert Markdown to PDF Using Docker
-      - name: Convert Markdown to PDF
-        uses: addnab/docker-run-action@v3
+      # 7. Cache LaTeX Packages
+      - name: Cache LaTeX Packages
+        uses: actions/cache@v3
         with:
-          image: pandoc/core:2.19  # Pin to a specific version for consistency
-          options: --user ${{ steps.get_ids.outputs.uid }}:${{ steps.get_ids.outputs.gid }}
-          run: |
-            mkdir -p pdf
-            pandoc Deep-Dive.md -o pdf/Deep-Dive.pdf --pdf-engine=xelatex
+          path: /usr/local/texlive
+          key: ${{ runner.os }}-latex
+          restore-keys: |
+            ${{ runner.os }}-latex
 
-      # 8. Commit and Push PDF (if changed)
+      # 8. Install Pandoc and LaTeX Dependencies
+      - name: Install Pandoc and LaTeX
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y pandoc texlive texlive-xetex texlive-latex-extra
+
+      # 9. Convert Markdown to PDF
+      - name: Convert Markdown to PDF
+        run: |
+          mkdir -p pdf
+          pandoc Deep-Dive.md -o pdf/Deep-Dive.pdf --pdf-engine=xelatex
+
+      # 10. Commit and Push PDF (if changed)
       - name: Commit and Push PDF
         run: |
-          # Check if pdf/Deep-Dive.pdf was modified
           if git diff --quiet pdf/Deep-Dive.pdf; then
             echo "No PDF updates needed."
           else
