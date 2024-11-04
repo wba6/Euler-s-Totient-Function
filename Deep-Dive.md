@@ -37,88 +37,99 @@ header-includes:
 # Cool Results from Euler's Totient Function
 
 ## Introduction
-- **Overview of Euler's Totient Function**
+
+  - **Overview of Euler's Totient Function**
   - Definition and basic intuition
-- **Significance in Number Theory**
+  - **Significance in Number Theory**
   - Role in understanding the structure of integers
-- **Historical Context**
+  - **Historical Context**
   - Euler's contributions to mathematics
   - Development of the totient function concept
 
 ## Definition and Fundamental Properties
-- **Formal Definition**
+
+  - **Formal Definition**
   - Mathematical definition of φ(n)
-- **Basic Properties**
+  - **Basic Properties**
   - φ(1) = 1
   - φ(p) = p - 1 for prime p
-- **Examples**
+  - **Examples**
   - Calculating φ(n) for various n
 
 ## Euler's Theorem and Its Implications
-- **Statement of Euler's Theorem**
+
+  - **Statement of Euler's Theorem**
   - If gcd(a, n) = 1, then $a^{\phi(n)} \equiv 1 \mod n$
-- **Proof Outline**
+  - **Proof Outline**
   - Key steps in proving Euler's Theorem
-- **Applications**
+  - **Applications**
   - Cryptography (e.g., RSA algorithm)
   - Fermat's Little Theorem as a special case
 
 ## Multiplicative Nature of the Totient Function
-- **Multiplicativity**
+
+  - **Multiplicativity**
   - φ(mn) = φ(m)φ(n) when gcd(m, n) = 1
-- **Implications for Computing φ(n)**
+  - **Implications for Computing φ(n)**
   - Efficient calculation using prime factorization
 
 ## Formula for Euler's Totient Function
-- **Euler's Product Formula**
+
+  - **Euler's Product Formula**
   - $$\phi(n) = n \prod_{p|n} \left(1 - \frac{1}{p}\right)$$
-- **Derivation of the Formula**
+  - **Derivation of the Formula**
   - Step-by-step derivation based on prime factors
-- **Examples**
+  - **Examples**
   - Applying the formula to compute φ(n) for specific integers
 
 ## Interesting Results and Identities
-- **Sum of Totients**
+
+  - **Sum of Totients**
   - $$\sum_{d|n} \phi(d) = n$$
-- **Relation to Other Number-Theoretic Functions**
+  - **Relation to Other Number-Theoretic Functions**
   - Connections with Möbius function, divisor functions, etc.
-- **Totient Function in Modular Arithmetic**
+  - **Totient Function in Modular Arithmetic**
   - Applications in solving congruences
 
 ## Applications in Cryptography
-- **RSA Algorithm**
+
+  - **RSA Algorithm**
   - Role of φ(n) in key generation and encryption/decryption
-- **Other Cryptographic Schemes**
+  - **Other Cryptographic Schemes**
   - Digital signatures, Diffie-Hellman key exchange
-- **Security Implications**
+  - **Security Implications**
   - Importance of φ(n) in ensuring cryptographic strength
 
 ## Historical Development and Contributions
-- **Euler's Original Work**
+
+  - **Euler's Original Work**
   - Euler's introduction and initial studies of the totient function
-- **Evolution Through Time**
+  - **Evolution Through Time**
   - Key mathematicians who expanded on Euler's ideas
-- **Modern Developments**
+  - **Modern Developments**
   - Contemporary research involving the totient function
 
 ## Advanced Topics and Generalizations
-- **Carmichael Function**
+
+  - **Carmichael Function**
   - Comparison with Euler's totient function
-- **Totient Function in Algebraic Structures**
+  - **Totient Function in Algebraic Structures**
   - Extensions to rings and fields
-- **Generalizations**
+  - **Generalizations**
   - Higher-order totient functions and their properties
 
 ## Conclusion
-- **Summary of Key Results**
+
+  - **Summary of Key Results**
   - Recap of the most significant mathematical findings related to φ(n)
-- **Impact on Mathematics and Beyond**
+  - **Impact on Mathematics and Beyond**
   - Influence on number theory, cryptography, and other fields
-- **Future Directions**
+  - **Future Directions**
   - Potential areas for further research involving the totient function
 
 ## References
-- **Primary Sources**
+
+  - **Primary Sources**
   - Euler's original papers
-- **Secondary Sources**
+  - **Secondary Sources**
   - Textbooks and research articles on number theory and cryptography
