@@ -68,7 +68,7 @@ jobs:
           echo "uid=$(id -u)" >> $GITHUB_OUTPUT
           echo "gid=$(id -g)" >> $GITHUB_OUTPUT
 
-      # 6b. Check UID and GID
+      # 6b. Check UID and GID (Debugging Step)
       - name: Check UID and GID
         run: echo "UID: ${{ steps.get_ids.outputs.uid }}, GID: ${{ steps.get_ids.outputs.gid }}"
 
@@ -77,7 +77,7 @@ jobs:
         run: |
           sudo chown -R ${{ steps.get_ids.outputs.uid }}:${{ steps.get_ids.outputs.gid }} /github/workspace
 
-      # 7. Convert Markdown to PDF Using Docker with Debugging
+      # 7. Convert Markdown to PDF Using Docker
       - name: Convert Markdown to PDF
         id: convert-to-pdf  # Added ID here
         uses: addnab/docker-run-action@v3
