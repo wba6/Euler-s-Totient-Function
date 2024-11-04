@@ -1,8 +1,7 @@
 name: Convert Markdown to PDF and Commit
 
-# Define the permissions for GITHUB_TOKEN
 permissions:
-  contents: write  # Grants read and write access to repository contents
+  contents: write
 
 on:
   push:
@@ -11,52 +10,46 @@ on:
     paths:
       - 'Deep-Dive.md'
       - '.github/workflows/convert-markdown-to-pdf.yml'
-      - 'scripts/fix_markdown.sh'  # Include the fix script in the watch paths
+      - 'scripts/fix_markdown.sh'
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
-    # Use a Docker container with Pandoc and XeLaTeX pre-installed
     container:
-      image: jamesgeorge007/pandoc-xelatex:latest  # Replace with a suitable image
+      image: pandoc/core:latest  # Official Pandoc image
 
     steps:
-      # 1. Checkout Repository
       - name: Checkout Repository
         uses: actions/checkout@v3
         with:
-          fetch-depth: 0  # Ensures full history is fetched
+          fetch-depth: 0
 
-      # 2. Set Up Git User for Commit
       - name: Set up Git User
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
 
-      # 3. Install Node.js
+      - name: Install XeLaTeX and LaTeX Packages
+        run: |
+          apk update && apk add --no-cache texlive-full
+
       - name: Install Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '16'  # Specify the Node.js version
+          node-version: '16'
 
-      # 4. Install Markdownlint
       - name: Install Markdownlint
         run: |
           npm install -g markdownlint-cli
 
-      # 5. Run Markdown Fix Script
       - name: Fix Markdown Formatting
         run: |
-          # Ensure the script is executable
           chmod +x scripts/fix_markdown.sh
-          # Run the script on Deep-Dive.md with backup option
           scripts/fix_markdown.sh -b Deep-Dive.md
 
-      # 6. Commit and Push Markdown Fixes (if any)
       - name: Commit and Push Markdown Fixes
         run: |
-          # Check if Deep-Dive.md was modified
           if git diff --quiet Deep-Dive.md; then
             echo "No Markdown fixes needed."
           else
@@ -65,16 +58,13 @@ jobs:
             git push origin main
           fi
 
-      # 7. Convert Markdown to PDF
       - name: Convert Markdown to PDF
         run: |
           mkdir -p pdf
           pandoc Deep-Dive.md -o pdf/Deep-Dive.pdf --pdf-engine=xelatex
 
-      # 8. Commit and Push PDF (if changed)
       - name: Commit and Push PDF
         run: |
-          # Check if pdf/Deep-Dive.pdf was modified
           if git diff --quiet pdf/Deep-Dive.pdf; then
             echo "No PDF updates needed."
           else
