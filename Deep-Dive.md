@@ -185,16 +185,14 @@ These properties not only facilitate the computation of $\phi(n)$ for various in
   - Using the concept of multiplicative order.
   - Leveraging the properties of $φ(n)$ in cyclic groups.
   - **Applications**
-  - **Cryptography**
-    - Basis for the RSA algorithm.
   - **Number Theory**
     - Fermat's Little Theorem as a special case when $n$ is prime.
   - **Computational Applications**
     - Efficient exponentiation in modular arithmetic.
 
-## Multiplicative Nature and Computation
+## Multiplicative Nature and Computation (if we have space here)
 
-  - **Multiplicativity**
+  - **Multiplicativity** //Expands on what we mentioned earlier 
   - Detailed explanation of $\phi(mn) = \phi(m)\phi(n)$ under the condition $\gcd(m, n) = 1$.
   - **Computing $\phi(n)$**
   - Step-by-step method using prime factorization.
@@ -205,7 +203,7 @@ These properties not only facilitate the computation of $\phi(n)$ for various in
   $$
   - Derivation and intuitive understanding.
 
-## Interesting Results and Identities
+## Interesting Results and Identities 
 
   - **Sum of Totients**
   $$
@@ -213,10 +211,8 @@ These properties not only facilitate the computation of $\phi(n)$ for various in
   $$
   - Explanation and proof sketch.
   - **Relations to Other Functions**
-  - Connections with the Möbius function.
   - Interactions with divisor functions and the inclusion-exclusion principle.
   - **Modular Arithmetic Applications**
-  - Solving linear congruences using $\phi(n)$.
   - Applications in cyclic group theory.
   - **Other Notable Identities**
   - Euler's identity involving φ(n) and the number of generators of the multiplicative group modulo $n$.
@@ -226,21 +222,6 @@ These properties not only facilitate the computation of $\phi(n)$ for various in
   - **RSA Algorithm**
   - Role of $\phi(n)$ in key generation.
   - Encryption and decryption processes leveraging φ(n).
-
-## Advanced Topics
-
-  - **Carmichael Function**
-  - Definition and comparison with Euler's Totient Function.
-  - Applications where the Carmichael function is more suitable.
-  - **Generalizations**
-  - Higher-order totient functions.
-  - Functions counting integers with specific properties relative to $n$.
-  - **Totient Function in Algebra**
-  - Extensions to rings and fields.
-  - Role in group theory and module theory.
-  - **Analytic Number Theory**
-  - Asymptotic behavior of φ(n).
-  - Connections with the Riemann zeta function.
 
 ## Conclusion
 
