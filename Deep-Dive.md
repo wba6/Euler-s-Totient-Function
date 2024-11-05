@@ -169,7 +169,7 @@ To illustrate the computation of Euler's Totient Function, consider the followin
   - **Identity Element:** $\phi(1) = 1$.
   - **Prime Argument:** For prime $p$, $\phi(p) = p - 1$.
   - **Multiplicative Function:** If $\gcd(m, n) = 1$, then $\phi(mn) = \phi(m) \cdot \phi(n)$.
-  - **Prime Power:** For prime $p$ and integer $k \geq 1 \), \( \phi(p^k) = p^k - p^{k-1}$.
+  - **Prime Power:** For prime $p$ and integer $k \geq 1$, $\phi(p^k) = p^k - p^{k-1}$.
   - **Euler's Product Formula:** For $n = p_1^{k_1} p_2^{k_2} \cdots p_r^{k_r}$,
   $$
   \phi(n) = n \prod_{i=1}^{r} \left(1 - \frac{1}{p_i}\right)
@@ -204,10 +204,6 @@ These properties not only facilitate the computation of $\phi(n)$ for various in
   \phi(n) = n \prod_{p\,|\,n} \left(1 - \frac{1}{p}\right)
   $$
   - Derivation and intuitive understanding.
-  - **Efficient Algorithms**
-  - Algorithms for large $n$, especially relevant in cryptographic applications.
-  - **Examples**
-  - Applying the formula to specific numbers like $n = 28$, $n = 35$, etc.
 
 ## Interesting Results and Identities
 
@@ -230,15 +226,6 @@ These properties not only facilitate the computation of $\phi(n)$ for various in
   - **RSA Algorithm**
   - Role of $\phi(n)$ in key generation.
   - Encryption and decryption processes leveraging φ(n).
-  - **Other Cryptographic Schemes**
-  - Digital signatures.
-  - Diffie-Hellman key exchange.
-  - **Security Implications**
-  - Importance of choosing large primes to ensure φ(n) is difficult to factor.
-  - Potential vulnerabilities related to φ(n) computations.
-  - **Practical Considerations**
-  - Implementation challenges.
-  - Optimizing performance for cryptographic applications.
 
 ## Advanced Topics
 
