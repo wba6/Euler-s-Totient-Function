@@ -137,7 +137,7 @@ To illustrate the computation of Euler's Totient Function, consider the followin
      $$
    - Therefore, $\phi(10) = 4$.
 
-3. **Example 3: Compute \( \phi(15) \)**
+3. **Example 3: Compute $\phi(15)$**
 
    - Prime factorization of 15: $15 = 3 \times 5$
    - Applying the multiplicative property:
