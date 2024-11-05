@@ -51,10 +51,10 @@ header-includes:
   - Mathematical expression of$\phi(n)$.
   - **Key Properties**
   - $\phi(1) = 1$
-  - 1$for prime$p$
+  - $1$ for prime $p$
   - $\phi(mn) = \phi(m)\phi(n)$ when $\gcd(m, n) = 1$
   - **Examples**
-  - Calculations of$\phi(n)$for various integers.
+  - Calculations of $\phi(n)$ for various integers.
 
 ## Euler's Theorem
 
