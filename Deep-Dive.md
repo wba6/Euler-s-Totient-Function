@@ -192,7 +192,7 @@ These properties not only facilitate the computation of $\phi(n)$ for various in
 
 ## Multiplicative Nature and Computation (if we have space here)
 
-  - **Multiplicativity** //Expands on what we mentioned earlier 
+  - **Multiplicativity** //Expands on what we mentioned earlier
   - Detailed explanation of $\phi(mn) = \phi(m)\phi(n)$ under the condition $\gcd(m, n) = 1$.
   - **Computing $\phi(n)$**
   - Step-by-step method using prime factorization.
