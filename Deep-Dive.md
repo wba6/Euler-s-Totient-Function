@@ -38,86 +38,125 @@ header-includes:
 
 ## Introduction
 
-  - **Euler's Totient Function Overview**
-  - Definition: φ(n) counts the positive integers up to$n$that are relatively prime to$n$.
+- **Euler's Totient Function Overview**
+  - Definition: The Euler's Totient Function, denoted as φ(n), counts the number of positive integers up to $n$ that are relatively prime to $n$.
   - Basic intuition and significance in number theory.
-  - **Historical Background**
+- **Historical Background**
   - Euler's development of the totient function.
   - Importance in the evolution of number theory.
+  - Key milestones and contributions by other mathematicians.
 
 ## Definition and Fundamental Properties
 
-  - **Formal Definition**
-  - Mathematical expression of$\phi(n)$.
-  - **Key Properties**
+- **Formal Definition**
+  - Mathematical expression of $\phi(n)$:
+    $$
+    \phi(n) = |\{ k \in \mathbb{N} \mid 1 \leq k \leq n \text{ and } \gcd(k, n) = 1 \}|
+    $$
+- **Key Properties**
   - $\phi(1) = 1$
-  - $1$ for prime $p$
-  - $\phi(mn) = \phi(m)\phi(n)$ when $\gcd(m, n) = 1$
-  - **Examples**
-  - Calculations of $\phi(n)$ for various integers.
+  - If $p$ is a prime, then $\phi(p) = p - 1$
+  - Multiplicativity: $\phi(mn) = \phi(m)\phi(n)$ when $\gcd(m, n) = 1$
+  - For prime power: $\phi(p^k) = p^k - p^{k-1}$
+- **Examples**
+  - Calculations of $\phi(n)$ for various integers:
+    - $\phi(6) = 2$
+    - $\phi(10) = 4$
+    - $\phi(15) = 8$
 
 ## Euler's Theorem
 
-  - **Statement**
+- **Statement**
   - If $\gcd(a, n) = 1$, then $a^{\phi(n)} \equiv 1 \pmod{n}$.
-  - **Proof Outline**
-  - Basic steps to understand the theorem.
-  - **Applications**
-  - Cryptography (e.g., RSA algorithm).
-  - Fermat's Little Theorem as a special case.
+- **Proof Outline**
+  - Using the concept of multiplicative order.
+  - Leveraging the properties of φ(n) in cyclic groups.
+- **Applications**
+  - **Cryptography**
+    - Basis for the RSA algorithm.
+  - **Number Theory**
+    - Fermat's Little Theorem as a special case when $n$ is prime.
+  - **Computational Applications**
+    - Efficient exponentiation in modular arithmetic.
 
 ## Multiplicative Nature and Computation
 
-  - **Multiplicativity**
-  - Explanation of $\phi(mn) = \phi(m)\phi(n)$ under coprimality.
-  - **Computing $\phi(n)$**
-  - Efficient calculation using prime factorization.
-  - **Euler's Product Formula:**
-    $$
-    \phi(n) = n \prod_{p\,|\,n} \left(1 - \frac{1}{p}\right)
-    $$
-  - **Examples**
-  - Applying the formula to specific numbers.
+- **Multiplicativity**
+  - Detailed explanation of $\phi(mn) = \phi(m)\phi(n)$ under the condition $\gcd(m, n) = 1$.
+- **Computing $\phi(n)$**
+  - Step-by-step method using prime factorization.
+  - Example calculations for composite numbers.
+- **Euler's Product Formula**
+  $$
+  \phi(n) = n \prod_{p\,|\,n} \left(1 - \frac{1}{p}\right)
+  $$
+  - Derivation and intuitive understanding.
+- **Efficient Algorithms**
+  - Algorithms for large $n$, especially relevant in cryptographic applications.
+- **Examples**
+  - Applying the formula to specific numbers like $n = 28$, $n = 35$, etc.
 
 ## Interesting Results and Identities
 
-  - **Sum of Totients**
-  - $$
+- **Sum of Totients**
+  $$
   \sum_{d\,|\,n} \phi(d) = n
   $$
-  - **Relations to Other Functions**
-  - Connections with the Möbius function and divisor functions.
-  - **Modular Arithmetic Applications**
-  - Solving congruences using $\phi(n)$.
+  - Explanation and proof sketch.
+- **Relations to Other Functions**
+  - Connections with the Möbius function.
+  - Interactions with divisor functions and the inclusion-exclusion principle.
+- **Modular Arithmetic Applications**
+  - Solving linear congruences using $\phi(n)$.
+  - Applications in cyclic group theory.
+- **Other Notable Identities**
+  - Euler's identity involving φ(n) and the number of generators of the multiplicative group modulo $n$.
 
 ## Applications in Cryptography
 
-  - **RSA Algorithm**
-  - Role of $\phi(n)$ in key generation and encryption/decryption.
-  - **Other Schemes**
-  - Digital signatures and key exchange methods.
-  - **Security Implications**
-  - Importance of $\phi(n)$ in maintaining cryptographic strength.
+- **RSA Algorithm**
+  - Role of $\phi(n)$ in key generation.
+  - Encryption and decryption processes leveraging φ(n).
+- **Other Cryptographic Schemes**
+  - Digital signatures.
+  - Diffie-Hellman key exchange.
+- **Security Implications**
+  - Importance of choosing large primes to ensure φ(n) is difficult to factor.
+  - Potential vulnerabilities related to φ(n) computations.
+- **Practical Considerations**
+  - Implementation challenges.
+  - Optimizing performance for cryptographic applications.
 
 ## Advanced Topics
 
-  - **Carmichael Function**
-  - Comparison with Euler's Totient Function.
-  - **Generalizations**
+- **Carmichael Function**
+  - Definition and comparison with Euler's Totient Function.
+  - Applications where the Carmichael function is more suitable.
+- **Generalizations**
   - Higher-order totient functions.
-  - **Totient Function in Algebra**
+  - Functions counting integers with specific properties relative to $n$.
+- **Totient Function in Algebra**
   - Extensions to rings and fields.
+  - Role in group theory and module theory.
+- **Analytic Number Theory**
+  - Asymptotic behavior of φ(n).
+  - Connections with the Riemann zeta function.
 
 ## Conclusion
 
-  - **Summary of Key Points**
-  - Recap of important properties and applications of $\phi(n)$.
-  - **Impact and Future Directions**
-  - Influence on number theory and cryptography.
-  - Potential areas for further research.
+- **Summary of Key Points**
+  - Recap of important properties and applications of φ(n).
+  - Highlighting the versatility of the totient function in various mathematical domains.
+- **Impact and Future Directions**
+  - Influence on number theory and modern cryptography.
+  - Potential areas for further research, such as unexplored generalizations and applications in emerging fields.
+- **Final Thoughts**
+  - The enduring significance of Euler's Totient Function in mathematics.
 
 ## References
 
-  - **Primary Sources**
-  - Euler's original works on the totient function.
-  - **Secondary Sources**
+- **Primary Sources**
+
+- **Secondary Sources**
+
+
