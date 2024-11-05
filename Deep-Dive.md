@@ -45,7 +45,7 @@ header-includes:
   - Euler's development of the totient function.
   - Importance in the evolution of number theory.
   - Key milestones and contributions by other mathematicians.
-  
+
 Euler's Totient Function, denoted as $φ(n)$, is a important concept that is used widely in number theory that counts the number of positive integers up to a given integer $n$ that are relatively prime to $n$. This function plays a crucial role in various applications, including cryptography, algebra, and the study of prime numbers. Euler's function serves as important piece of Euler's Theorem, a generalization of Fermat's Little Theorem, which states that if $\gcd(a, n) = 1$, then $a^{\phi(n)} \equiv 1 \pmod{n}$. This theorem implications in modular arithmetic and is key to the security of widely used cryptographic algorithms such as RSA. Additionally, the totient function provides deep insights into the multiplicative structure of integers. Historically, the development of the totient function is attributed to the illustrious mathematician Leonhard Euler in the 18th century. Euler introduced φ(n) in his efforts to generalize Fermat's work and to address problems related to the distribution of prime numbers. His pioneering work laid the groundwork for modern number theory, influencing subsequent generations of mathematicians and leading to significant advancements in the field.
 
 ## Definition and Fundamental Properties
@@ -65,6 +65,7 @@ Euler's Totient Function, denoted as $φ(n)$, is a important concept that is use
     - $\phi(6) = 2$
     - $\phi(10) = 4$
     - $\phi(15) = 8$
+
 ## Definition and Fundamental Properties
 
 ### Formal Definition
@@ -165,17 +166,16 @@ To illustrate the computation of Euler's Totient Function, consider the followin
 
 ### Summary of Fundamental Properties
 
-- **Identity Element:** $\phi(1) = 1$.
-- **Prime Argument:** For prime $p$, $\phi(p) = p - 1$.
-- **Multiplicative Function:** If $\gcd(m, n) = 1$, then $\phi(mn) = \phi(m) \cdot \phi(n)$.
-- **Prime Power:** For prime $p$ and integer $k \geq 1 \), \( \phi(p^k) = p^k - p^{k-1}$.
-- **Euler's Product Formula:** For $n = p_1^{k_1} p_2^{k_2} \cdots p_r^{k_r}$,
+  - **Identity Element:** $\phi(1) = 1$.
+  - **Prime Argument:** For prime $p$, $\phi(p) = p - 1$.
+  - **Multiplicative Function:** If $\gcd(m, n) = 1$, then $\phi(mn) = \phi(m) \cdot \phi(n)$.
+  - **Prime Power:** For prime $p$ and integer $k \geq 1 \), \( \phi(p^k) = p^k - p^{k-1}$.
+  - **Euler's Product Formula:** For $n = p_1^{k_1} p_2^{k_2} \cdots p_r^{k_r}$,
   $$
   \phi(n) = n \prod_{i=1}^{r} \left(1 - \frac{1}{p_i}\right)
   $$
 
 These properties not only facilitate the computation of $\phi(n)$ for various integers but also lay the groundwork for deeper explorations into number theory and its applications.
-
 
 ## Euler's Theorem
 
