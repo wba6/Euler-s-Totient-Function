@@ -248,18 +248,5 @@ Euler's Totient Function makes RSA secure because finding $\phi(n)$ without know
 
 ## Conclusion
 
-  - **Summary of Key Points**
-  - Recap of important properties and applications of φ(n).
-  - Highlighting the versatility of the totient function in various mathematical domains.
-  - **Impact and Future Directions**
-  - Influence on number theory and modern cryptography.
-  - Potential areas for further research, such as unexplored generalizations and applications in emerging fields.
-  - **Final Thoughts**
-  - The enduring significance of Euler's Totient Function in mathematics.
-
-## References
-
-  - **Primary Sources**
-
-  - **Secondary Sources**
+  In summary, Euler's Totient Function $\phi(n)$ is a fundamental and important concept  in number theory. Being defined as the count of positive integers up to $n$ that are relatively prime to $n$. We explored many of its key properties, including its behavior with prime numbers, its multiplicative nature, and its application in calculating totients of prime powers and composite numbers through Euler's product formula. Euler's Totient Function also had several intriguing identities and results, such as the Sum of Totients Identity, perfect totient numbers, and the relationship between $\phi(n)$ and other mathematical functions like the Möbius function. Additionally, we explored the role of Euler's Totient Function in modern cryptography, where it is used in the RSA encryption algorithm, where it is critical to the security of encrypted communications.
 
