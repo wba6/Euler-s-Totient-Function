@@ -215,8 +215,36 @@ These properties not only facilitate the computation of $\phi(n)$ for various in
   - **Modular Arithmetic Applications**
   - Applications in cyclic group theory.
   - **Other Notable Identities**
-  - Euler's identity involving φ(n) and the number of generators of the multiplicative group modulo $n$.
+  - Euler's identity involving φ(n) and the number of generators of the multiplicative group modulo $n$. 
 
+#### Sum of Totients Identity
+The Sum of Totients identity states that the sum of Euler's totient function values $\phi(d)$ over all positive divisors $d$ of an integer $n$ is equal to $n$: $$
+  \sum_{d\,|\,n} \phi(d) = n
+  $$ where $d \ | \ n$ means $d$ is a divisor of $n$ 
+
+#### Perfect Totient Numbers
+A perfect totient number is an integer that is equal to the sum of its iterated totients. That is, we apply Euler's totient function $\phi(n)$ to a number $n$, apply it again to the resulting totient, and so on, until the number 1 is reached, and add together the resulting sequence of numbers. If this sum equals $n$, then $n$ is a perfect totient number.
+**Example**: Let n = 9
+$\phi(9) = 6$
+$\phi(6) = 2$
+$\phi(2) = 1$ 
+By adding up the results, $6+2+1=9$ , 9 is a perfect totient number.
+
+#### Fermat's Little Theorem and Totients
+Fermat's little theorem states that if $p$ is a prime number, then for any integer $a$, the number $a^{p} - a$ is an integer multiple of $p$. This can be expressed as $$a^{p} \equiv a \mod p $$ However, if $a$ is coprime to $p$, then Fermat's little theorem says that $a^{p-1}-1$ is an integer multiple of $p$. This can be expressed as $$a^{p-1} \equiv 1 \mod p $$ Euler's Totient function, $\phi(n)$, can be used to generalize Fermat's Little Theorem. This looks like the following: $$a^{\phi(n)} \equiv 1 \mod n $$ This applies specifically when $n$ is a prime $p$ since $\phi(p) = p - 1$ . 
+
+#### Consecutive Totients and Totient Chains
+An interesting property of Euler's Totient Function is that it is possible to find sequences of numbers called totient chains. A totient chain is when you repeatedly apply the totient function to $n$ until you reach 1.
+
+**Example**: Let n = 20
+$\phi(20) = 8$
+$\phi(8) = 4$
+$\phi(4) = 2$ 
+$\phi(2) = 1$
+
+The corresponding totient chain being $$20\rightarrow 8 \rightarrow 4 \rightarrow2 \rightarrow1$$ 
+#### Asymptotic Growth of Totient Inverses
+The sum of the reciprocals of the totient function values diverges. This means as you take the infinite series of $\frac{1}{\phi(n)}$ it will go off to infinity. In symbols this is expressed as $$\sum_{n=1}^{\infty} \frac{1}{\phi(n)} = \infty$$ This result shows that the values of $\phi(n)$ are distributed sparsely enough to allow their reciprocals to sum to infinity.
 ## Applications in Cryptography
 
 #### RSA Encryption
