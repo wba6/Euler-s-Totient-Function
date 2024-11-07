@@ -217,7 +217,9 @@ $$\mu(n) =  \begin{cases}
 $$Now it can be seen an interesting relationship exists between Euler's totient function and the Möbius function where the totient function can be expressed using an alternating sum involving divisors. This can be expressed as the following: $$\phi(n) = n\sum_{d|n}\frac{\mu(d)}{d}$$where $d$ runs over the divisors of $n$. This formula shows a connection between the structure of divisors and prime factorization properties.
 
 #### Carmichael's Totient Conjecture
+
 Carmichael's conjecture (still unproven), believes that for every integer $m$, there exists at least one integer $n$ such that $\phi(n) = m$. This conjecture is believed to be true, but has not been proven. The existence of such an $n$ for each $m$ would undermine the totient function's ability to cover all positive integers, highlighting its versatility in producing values throughout the natural numbers.
+
 ## Applications in Cryptography
 
 #### RSA Encryption
