@@ -38,34 +38,7 @@ header-includes:
 
 ## Introduction
 
-  - **Euler's Totient Function Overview**
-  - Definition: The Euler's Totient Function, denoted as φ(n), counts the number of positive integers up to $n$ that are relatively prime to $n$.
-  - Basic intuition and significance in number theory.
-  - **Historical Background**
-  - Euler's development of the totient function.
-  - Importance in the evolution of number theory.
-  - Key milestones and contributions by other mathematicians.
-
 Euler's Totient Function, denoted as $φ(n)$, is a important concept that is used widely in number theory that counts the number of positive integers up to a given integer $n$ that are relatively prime to $n$. This function plays a crucial role in various applications, including cryptography, algebra, and the study of prime numbers. Euler's function serves as important piece of Euler's Theorem, a generalization of Fermat's Little Theorem, which states that if $\gcd(a, n) = 1$, then $a^{\phi(n)} \equiv 1 \pmod{n}$. This theorem implications in modular arithmetic and is key to the security of widely used cryptographic algorithms such as RSA. Additionally, the totient function provides deep insights into the multiplicative structure of integers. Historically, the development of the totient function is attributed to the illustrious mathematician Leonhard Euler in the 18th century. Euler introduced φ(n) in his efforts to generalize Fermat's work and to address problems related to the distribution of prime numbers. His pioneering work laid the groundwork for modern number theory, influencing subsequent generations of mathematicians and leading to significant advancements in the field.
-
-## Definition and Fundamental Properties
-
-  - **Formal Definition**
-  - Mathematical expression of $\phi(n)$:
-    $$
-    \phi(n) = |\{ k \in \mathbb{N} \mid 1 \leq k \leq n \text{ and } \gcd(k, n) = 1 \}|
-    $$
-  - **Key Properties**
-  - $\phi(1) = 1$
-  - If $p$ is a prime, then $\phi(p) = p - 1$
-  - Multiplicativity: $\phi(mn) = \phi(m)\phi(n)$ when $\gcd(m, n) = 1$
-  - For prime power: $\phi(p^k) = p^k - p^{k-1}$
-  - **Examples**
-  - Calculations of $\phi(n)$ for various integers:
-    - $\phi(6) = 2$
-    - $\phi(10) = 4$
-    - $\phi(15) = 8$
-
 ## Definition and Fundamental Properties
 
 ### Formal Definition
