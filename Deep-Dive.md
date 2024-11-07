@@ -219,9 +219,26 @@ These properties not only facilitate the computation of $\phi(n)$ for various in
 
 ## Applications in Cryptography
 
-  - **RSA Algorithm**
-  - Role of $\phi(n)$ in key generation.
-  - Encryption and decryption processes leveraging φ(n).
+#### RSA Encryption
+RSA encryption is a widely used encryption system based on public-key cryptography, which allows for secure data transmission between two parties. RSA is based on the mathematical properties of prime numbers and modular arithmetic.
+
+**How it works**:
+In RSA, each user has two keys:
+1. **A public key** which is used to encrypt messages and can be shared openly.
+2. **A private key** which is used to decrypt messages and is kept secret.
+
+These keys are generated as follows:
+1. Choose two large prime numbers, $p$ and $q$, and calculate their product, $n = p * q$. The value $n$ is part of the public key.
+2. Compute Euler's Totient Function, $\phi(n)$. In RSA, $\phi(n) = (p-1)(q-1)$, since $n$ is the product of two primes.
+
+**Role of Euler's Totient Function in RSA**:
+Euler's Totient Function is crucial in RSA because it helps in choosing an encryption exponent $e$ and in calculating the decryption exponent $d$.
+
+1. **Choosing the encryption exponent $e$** : The encryption exponent $e$ must be a number that is relatively prime to $\phi(n)$ (i.e. gcd($e,\phi(n)) = 1$). This ensures that $e$ has a modular inverse with respect to $\phi(n)$, which allows for decryption to be possible.
+2. **Calculating the decryption exponent $d$** : The decryption exponent $d$ is the modular inverse of $e$ with respect to $\phi(n)$. This means $d$ is chosen such that $e * d \equiv 1 \mod \phi(n)$. The private key consists of the values $d$ and $n$, which allows the original message to be decrypted.
+
+**Euler's Totient Function Importance**:
+Euler's Totient Function makes RSA secure because finding $\phi(n)$ without knowing the prime factors of $n$ ($p$ and $q$) is challenging. The security of RSA relies on the difficulty of factoring large numbers. Since $\phi(n)$ depends on the prime factors, anyone without $p$ and $q$ can't easily determine $\phi(n)$, and therefore can't calculate the decryption key, $d$.
 
 ## Conclusion
 
