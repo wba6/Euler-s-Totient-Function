@@ -162,10 +162,14 @@ The Sum of Totients identity states that the sum of Euler's totient function val
 #### Perfect Totient Numbers
 
 A perfect totient number is an integer that is equal to the sum of its iterated totients. That is, we apply Euler's totient function $\phi(n)$ to a number $n$, apply it again to the resulting totient, and so on, until the number 1 is reached, and add together the resulting sequence of numbers. If this sum equals $n$, then $n$ is a perfect totient number.
-**Example**: Let n = 9
+**Example**: Let $n = 9$
+
 $\phi(9) = 6$
+
 $\phi(6) = 2$
+
 $\phi(2) = 1$
+
 By adding up the results, $6+2+1=9$ , 9 is a perfect totient number.
 
 #### Fermat's Little Theorem and Totients
@@ -176,10 +180,14 @@ Fermat's little theorem states that if $p$ is a prime number, then for any integ
 
 An interesting property of Euler's Totient Function is that it is possible to find sequences of numbers called totient chains. A totient chain is when you repeatedly apply the totient function to $n$ until you reach 1.
 
-**Example**: Let n = 20
+**Example**: Let $n = 20$
+
 $\phi(20) = 8$
+
 $\phi(8) = 4$
+
 $\phi(4) = 2$
+
 $\phi(2) = 1$
 
 The corresponding totient chain being $$20\rightarrow 8 \rightarrow 4 \rightarrow2 \rightarrow1$$

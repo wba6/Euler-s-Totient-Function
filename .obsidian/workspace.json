@@ -1,14 +1,14 @@
 {
   "main": {
-    "id": "ba3f3725384af6be",
+    "id": "e46d7f974c6ca2b8",
     "type": "split",
     "children": [
       {
-        "id": "1918bf8ddebdf1ba",
+        "id": "56122c6f7ff61bd4",
         "type": "tabs",
         "children": [
           {
-            "id": "e2ecbfbbeedcca9c",
+            "id": "c71ce84f55370be5",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -16,7 +16,9 @@
                 "file": "Deep-Dive.md",
                 "mode": "source",
                 "source": false
-              }
+              },
+              "icon": "lucide-file",
+              "title": "Deep-Dive"
             }
           }
         ]
@@ -25,62 +27,69 @@
     "direction": "vertical"
   },
   "left": {
-    "id": "bc5743264e97df01",
+    "id": "7ceeff3f0775703d",
     "type": "split",
     "children": [
       {
-        "id": "50fbe8b870b8d22c",
+        "id": "154d2b28e6b01b50",
         "type": "tabs",
         "children": [
           {
-            "id": "2002aea5171aecff",
+            "id": "5e8bc53e2902e801",
             "type": "leaf",
             "state": {
               "type": "file-explorer",
               "state": {
                 "sortOrder": "alphabetical"
-              }
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Files"
             }
           },
           {
-            "id": "724a239d04a6e7f8",
+            "id": "045bffe4733e35af",
             "type": "leaf",
             "state": {
               "type": "search",
               "state": {
-                "query": "",
+                "query": "tag:#n",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical"
-              }
+              },
+              "icon": "lucide-search",
+              "title": "Search"
             }
           },
           {
-            "id": "70f27c3a60e369cf",
+            "id": "b7400609cda0dfdb",
             "type": "leaf",
             "state": {
               "type": "bookmarks",
-              "state": {}
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Bookmarks"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
     "width": 300
   },
   "right": {
-    "id": "157df17c54855ae2",
+    "id": "81e7e3130842a126",
     "type": "split",
     "children": [
       {
-        "id": "9ed48c85307f89ab",
+        "id": "c1773737b778480d",
         "type": "tabs",
         "children": [
           {
-            "id": "42c1603c843abb21",
+            "id": "18452114627f98d1",
             "type": "leaf",
             "state": {
               "type": "backlink",
@@ -93,11 +102,13 @@
                 "searchQuery": "",
                 "backlinkCollapsed": false,
                 "unlinkedCollapsed": true
-              }
+              },
+              "icon": "links-coming-in",
+              "title": "Backlinks for Deep-Dive"
             }
           },
           {
-            "id": "e7b0ef0f7dbc21b2",
+            "id": "8cec2f9cdd39cec8",
             "type": "leaf",
             "state": {
               "type": "outgoing-link",
@@ -105,28 +116,34 @@
                 "file": "Deep-Dive.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
-              }
+              },
+              "icon": "links-going-out",
+              "title": "Outgoing links from Deep-Dive"
             }
           },
           {
-            "id": "0a3e3627e71901eb",
+            "id": "643b84a568df7ca9",
             "type": "leaf",
             "state": {
               "type": "tag",
               "state": {
                 "sortOrder": "frequency",
                 "useHierarchy": true
-              }
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
             }
           },
           {
-            "id": "6a9c61c17f3bb4e4",
+            "id": "8fc27dfcf181ef9d",
             "type": "leaf",
             "state": {
               "type": "outline",
               "state": {
                 "file": "Deep-Dive.md"
-              }
+              },
+              "icon": "lucide-list",
+              "title": "Outline of Deep-Dive"
             }
           }
         ]
@@ -146,9 +163,6 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "e2ecbfbbeedcca9c",
-  "lastOpenFiles": [
-    "pdf/Deep-Dive.pdf",
-    "Deep-Dive.md"
-  ]
+  "active": "045bffe4733e35af",
+  "lastOpenFiles": []
 }
