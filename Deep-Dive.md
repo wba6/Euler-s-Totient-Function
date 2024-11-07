@@ -213,20 +213,22 @@ Euler's Totient Function is crucial in RSA because it helps in choosing an encry
 Euler's Totient Function makes RSA secure because finding $\phi(n)$ without knowing the prime factors of $n$ ($p$ and $q$) is challenging. The security of RSA relies on the difficulty of factoring large numbers. Since $\phi(n)$ depends on the prime factors, anyone without $p$ and $q$ can't easily determine $\phi(n)$, and therefore can't calculate the decryption key, $d$.
 
 #### Totient Function and Perfect Numbers
+
 For an even perfect number $n$, which has the form $n = 2^{p-1}(2^{p} - 1)$ where $2^{p} -1$  is a Mersenne prime, there is an interesting result: $$\phi(n) = n - 2^{p-1} $$This result is due to the structure of perfect even numbers and gives insight into their divisor structure and properties. The totient function value for a perfect number is always relatively close to the number itself.
 
 **Example**: Let $p = 3$
-$n = 2^{3-1}(2^{3}-1) = 4(7) = 28$ 
-$\phi(n) = \phi(28) = 28 - 2^{3-1} = 28 - 4 = 24$  
+$n = 2^{3-1}(2^{3}-1) = 4(7) = 28$
+$\phi(n) = \phi(28) = 28 - 2^{3-1} = 28 - 4 = 24$
 
 #### Totient Function and Möbius Function
-The Möbius function is a multiplicative function in number theory introduced by the German mathematician August Ferdinand Möbius. 
+
+The Möbius function is a multiplicative function in number theory introduced by the German mathematician August Ferdinand Möbius.
 
 The Möbius function can be defined by the following piecewise function:
-$$\mu(n) =  \begin{cases} 
+$$\mu(n) =  \begin{cases}
       1 & if\ \ n=1 \\
       (-1)^{k} & if \ n \ is \ the \ product \ of \ k \ distinct \ primes \\
-      0 & if \ n \ is \ divisible \ by \ a \ square > 1 
+      0 & if \ n \ is \ divisible \ by \ a \ square > 1
    \end{cases}
 $$Now it can be seen an interesting relationship exists between Euler's totient function and the Möbius function where the totient function can be expressed using an alternating sum involving divisors. This can be expressed as the following: $$\phi(n) = n\sum_{d|n}\frac{\mu(d)}{d}$$where $d$ runs over the divisors of $n$. This formula shows a connection between the structure of divisors and prime factorization properties.
 
