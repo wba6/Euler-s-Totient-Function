@@ -224,10 +224,12 @@ RSA encryption is a widely used encryption system based on public-key cryptograp
 
 **How it works**:
 In RSA, each user has two keys:
+
 1. **A public key** which is used to encrypt messages and can be shared openly.
 2. **A private key** which is used to decrypt messages and is kept secret.
 
 These keys are generated as follows:
+
 1. Choose two large prime numbers, $p$ and $q$, and calculate their product, $n = p * q$. The value $n$ is part of the public key.
 2. Compute Euler's Totient Function, $\phi(n)$. In RSA, $\phi(n) = (p-1)(q-1)$, since $n$ is the product of two primes.
 
