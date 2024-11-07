@@ -151,45 +151,7 @@ To illustrate the computation of Euler's Totient Function, consider the followin
 
 These properties not only facilitate the computation of $\phi(n)$ for various integers but also lay the groundwork for deeper explorations into number theory and its applications.
 
-## Euler's Theorem
-
-  - **Statement**
-  - If $\gcd(a, n) = 1$, then $a^{\phi(n)} \equiv 1 \pmod{n}$.
-  - **Proof Outline**
-  - Using the concept of multiplicative order.
-  - Leveraging the properties of $φ(n)$ in cyclic groups.
-  - **Applications**
-  - **Number Theory**
-    - Fermat's Little Theorem as a special case when $n$ is prime.
-  - **Computational Applications**
-    - Efficient exponentiation in modular arithmetic.
-
-## Multiplicative Nature and Computation (if we have space here)
-
-  - **Multiplicativity** //Expands on what we mentioned earlier
-  - Detailed explanation of $\phi(mn) = \phi(m)\phi(n)$ under the condition $\gcd(m, n) = 1$.
-  - **Computing $\phi(n)$**
-  - Step-by-step method using prime factorization.
-  - Example calculations for composite numbers.
-  - **Euler's Product Formula**
-  $$
-  \phi(n) = n \prod_{p\,|\,n} \left(1 - \frac{1}{p}\right)
-  $$
-  - Derivation and intuitive understanding.
-
 ## Interesting Results and Identities 
-
-  - **Sum of Totients**
-  $$
-  \sum_{d\,|\,n} \phi(d) = n
-  $$
-  - Explanation and proof sketch.
-  - **Relations to Other Functions**
-  - Interactions with divisor functions and the inclusion-exclusion principle.
-  - **Modular Arithmetic Applications**
-  - Applications in cyclic group theory.
-  - **Other Notable Identities**
-  - Euler's identity involving φ(n) and the number of generators of the multiplicative group modulo $n$.
 
 #### Sum of Totients Identity
 
