@@ -240,7 +240,6 @@ Euler's Totient Function is crucial in RSA because it helps in choosing an encry
 **Euler's Totient Function Importance**:
 Euler's Totient Function makes RSA secure because finding $\phi(n)$ without knowing the prime factors of $n$ ($p$ and $q$) is challenging. The security of RSA relies on the difficulty of factoring large numbers. Since $\phi(n)$ depends on the prime factors, anyone without $p$ and $q$ can't easily determine $\phi(n)$, and therefore can't calculate the decryption key, $d$.
 
-
 ## Conclusion
 
   - **Summary of Key Points**
