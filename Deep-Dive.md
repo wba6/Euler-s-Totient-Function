@@ -248,6 +248,7 @@ The sum of the reciprocals of the totient function values diverges. This means a
 ## Applications in Cryptography
 
 #### RSA Encryption
+
 RSA encryption is a widely used encryption system based on public-key cryptography, which allows for secure data transmission between two parties. RSA is based on the mathematical properties of prime numbers and modular arithmetic.
 
 **How it works**:
