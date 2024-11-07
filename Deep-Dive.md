@@ -38,7 +38,7 @@ header-includes:
 
 ## Introduction
 
-Euler's Totient Function, denoted as $φ(n)$, is a important concept that is used widely in number theory that counts the number of positive integers up to a given integer $n$ that are relatively prime to $n$. This function plays a crucial role in various applications, including cryptography, algebra, and the study of prime numbers. Euler's function serves as important piece of Euler's Theorem, a generalization of Fermat's Little Theorem, which states that if $\gcd(a, n) = 1$, then $a^{\phi(n)} \equiv 1 \pmod{n}$. This theorem implications in modular arithmetic and is key to the security of widely used cryptographic algorithms such as RSA. Additionally, the totient function provides deep insights into the multiplicative structure of integers. Historically, the development of the totient function is attributed to the illustrious mathematician Leonhard Euler in the 18th century. Euler introduced φ(n) in his efforts to generalize Fermat's work and to address problems related to the distribution of prime numbers. His pioneering work laid the groundwork for modern number theory, influencing subsequent generations of mathematicians and leading to significant advancements in the field.
+Euler's Totient Function, denoted as $φ(n)$, is a important concept that is used widely in number theory that counts the number of positive integers up to a given integer $n$ that are relatively prime to $n$. This function plays a crucial role in various applications, including cryptography, algebra, and the study of prime numbers. Euler's function serves as important piece of Euler's Theorem, a generalization of Fermat's Little Theorem, which states that if $\gcd(a, n) = 1$, then $a^{\phi(n)} \equiv 1 \pmod{n}$. This theorem implications in modular arithmetic and is key to the security of widely used cryptographic algorithms such as RSA. Additionally, the totient function provides deep insights into the multiplicative structure of integers. Historically, the development of the totient function is attributed to the illustrious mathematician Leonhard Euler in the 18th century. Euler introduced φ(n) to generalize Fermat's work and to address problems related to the distribution of prime numbers. His work laid the groundwork for modern number theory, influencing subsequent generations of mathematicians.
 
 ## Definition and Fundamental Properties
 
@@ -161,7 +161,7 @@ The Sum of Totients identity states that the sum of Euler's totient function val
 
 #### Perfect Totient Numbers
 
-A perfect totient number is an integer that is equal to the sum of its iterated totients. That is, we apply Euler's totient function $\phi(n)$ to a number $n$, apply it again to the resulting totient, and so on, until the number 1 is reached, and add together the resulting sequence of numbers. If this sum equals $n$, then $n$ is a perfect totient number.
+A perfect totient number is an integer that is equal to the sum of its iterated totients. We apply Euler's totient function $\phi(n)$ to a number $n$, apply it again to the resulting totient, and so on, until the number 1 is reached, and add together the resulting sequence of numbers. If this sum equals $n$, then $n$ is a perfect totient number.
 **Example**: Let $n = 9$
 
 $\phi(9) = 6$
@@ -204,10 +204,12 @@ RSA encryption is a widely used encryption system based on public-key cryptograp
 
 **How it works**:
 In RSA, each user has two keys:
+
 1. **A public key** which is used to encrypt messages and can be shared openly.
 2. **A private key** which is used to decrypt messages and is kept secret.
 
 These keys are generated as follows:
+
 1. Choose two large prime numbers, $p$ and $q$, and calculate their product, $n = p * q$. The value $n$ is part of the public key.
 2. Compute Euler's Totient Function, $\phi(n)$. In RSA, $\phi(n) = (p-1)(q-1)$, since $n$ is the product of two primes.
 
